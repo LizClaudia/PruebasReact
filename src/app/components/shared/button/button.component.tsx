@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+interface ButtonProps {
+  onclick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+}
 
-export default function ButtonComponent() {
+export default function ButtonComponent({ onclick =()=>{}}: ButtonProps) {
   return (
-    <div className='App-buttonAdd'>
-        +
-    </div>
-  )
+    <button className="App-buttonAdd" onClick={(e) => onclick ? onclick(e) : undefined}>
+      +
+    </button>
+  );
 }
