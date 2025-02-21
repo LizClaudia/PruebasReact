@@ -1,12 +1,14 @@
 import React from "react";
 interface ButtonProps {
   onclick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  className?:string;
+  children: React.ReactNode; 
 }
 
-export default function ButtonComponent({ onclick =()=>{}}: ButtonProps) {
+export default function ButtonComponent({ onclick =()=>{}, className = "App-buttonAdd",children= '+',}: ButtonProps) {
   return (
-    <button className="App-buttonAdd" onClick={(e) => onclick ? onclick(e) : undefined}>
-      +
+    <button className={className} onClick={onclick}>
+      {children}
     </button>
   );
 }

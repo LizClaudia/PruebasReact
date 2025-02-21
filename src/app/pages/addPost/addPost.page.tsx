@@ -60,7 +60,7 @@ function AddPost() {
           placeholder="Descripcion del Post"
         ></textarea>
         
-        <ButtonComponent onclick={submit}></ButtonComponent>
+        <ButtonComponent onclick={submit} children={'Agregar'} className="App-submit"></ButtonComponent>
       </form>
       <div className="App-grid">
         {cards.map((card, index) => (

@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <BreadcrumbComponent></BreadcrumbComponent>
+      <BreadcrumbComponent/>
     </header>
   );
 }
