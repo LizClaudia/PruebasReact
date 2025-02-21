@@ -78,6 +78,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
  - ### Reusable Components:
      - Created basic reusable components, such as `Button`, `Card`, `Grid`layout.
      - Designed a `Header`component that serves as the top navigation bar for all pages.
+## Second Step  -  Adding Features and Enhancements
+ - ### Environment Variables:
+       - Configured `.env` to store the API URL and ensure secure access to backend services.
+       - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
+- ### Backend Integration:
+      - Implemented  services to interact with the API:
+          - Fetch existing posts.
+          - Add a new post 
+      - Frontend Enhancements
+          - Added a new form component for creating posts.
+          - Updated the Button component to accept props and allow customization.
+          - Improved Breadcrumbs component to enhance navigation:
+                - Styled it for better readability.
+                - Linked it to the homepage and the new form page for improved user experience.
 ## Technologies Used
  - **React**: JavaScript library for building user interfaces.
  - **pnpm**: Fast and disk space-efficient package manager.
