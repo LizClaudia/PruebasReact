@@ -20,6 +20,7 @@ declare global {
  */
 
 export const getEnvVariable = (envVariable: EnvVariableKey): string => {
+    console.log(import.meta.env);
     window.env = { API_URL: "https://jsonplaceholder.typicode.com/posts" };
 
     return window?.env?.[envVariable] ?? import.meta.env[`VITE_${envVariable}`];

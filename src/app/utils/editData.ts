@@ -9,7 +9,7 @@ export const editPost = async (
     id: number,
     title: string,
     body: string
-): Promise<Post[]> => {
+): Promise<Post> => {
     const { data } = await api.put(`/${id}`, { title, body });
     return data;
 };

@@ -77,7 +77,7 @@ function EditPost() {
                     value={formData.postDesc}
                     onChange={handleChange}
                 ></textarea>
-                <ButtonComponent onclick={submit} className="App-submit">
+                <ButtonComponent onClick={submit} className="App-submit">
                     Modificar
                 </ButtonComponent>
             </form>

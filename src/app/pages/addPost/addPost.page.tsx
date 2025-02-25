@@ -65,7 +65,7 @@ function AddPost() {
                     placeholder="Descripcion del Post"
                 ></textarea>
 
-                <ButtonComponent onclick={submit} className="App-submit">
+                <ButtonComponent onClick={submit} className="App-submit">
                     Agregar
                 </ButtonComponent>
             </form>
