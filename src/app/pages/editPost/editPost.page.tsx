@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonComponent from "../../components/shared/button/button.component";
-import Card from "../../components/shared/cards/card.component";
-import { createPost } from "../../utils/postData";
-import { Post } from "../../services/posts_service";
+import { editPost, getPost } from "../../utils/editData";
+import { useNavigate, useParams } from "react-router-dom";
 
-function AddPost() {
+function EditPost() {
+    const { id } = useParams();
     const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
-    const [cards, setCards] = useState<Post[]>([]);
-    //    const cards = [
-    //     { title: "Card 1", description: "Description 1" },
-    //     { title: "Card 2", description: "Description 2" },
-    //     { title: "Card 3", description: "Description 3" },
-    //     { title: "Card 4", description: "Description 4" },
-    //     { title: "Card 5", description: "Description 5" },
-    //     { title: "Card 6", description: "Description 6" },
-    //     { title: "Card 7", description: "Description 7" },
-    //     { title: "Card 8", description: "Description 8" },
-    //   ];
+    const navigate = useNavigate();
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getPost(Number.parseInt(id!));
+                setFormData({
+                    postTitle: response.title || "",
+                    postDesc: response.body || "",
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -25,21 +32,29 @@ function AddPost() {
             [e.target.name]: e.target.value,
         });
     };
+
     const submit = async () => {
         try {
-            const newPost: Post = await createPost(
+            const editedPost = await editPost(
+                Number.parseInt(id!),
                 formData.postTitle,
                 formData.postDesc
             );
-            setCards((prevCards) => [...prevCards, newPost]);
             setFormData({ postTitle: "", postDesc: "" });
+            if (editedPost) {
+                setSuccessMessage("Se ha modificado el post correctamente.");
+                setTimeout(() => {
+                    navigate(-1);
+                }, 2000);
+            }
         } catch (error) {
             console.log("Error al enviar los datos: ", error);
         }
     };
+
     return (
         <div className="App">
-            <h3>Agregar un post</h3>
+            <h3>Modificar un post</h3>
             <form
                 className="App-form"
                 onSubmit={(e) => {
@@ -47,7 +62,6 @@ function AddPost() {
                 }}
             >
                 <input
-                    placeholder=" Titulo del Post"
                     className="App-input"
                     type="text"
                     id="postTitle"
@@ -62,26 +76,16 @@ function AddPost() {
                     name="postDesc"
                     value={formData.postDesc}
                     onChange={handleChange}
-                    placeholder="Descripcion del Post"
                 ></textarea>
-
                 <ButtonComponent onclick={submit} className="App-submit">
-                    Agregar
+                    Modificar
                 </ButtonComponent>
             </form>
-            <div className="App-grid">
-                {cards.map((card, index) => (
-                    <Card
-                        key={index}
-                        title={card.title}
-                        description={card.body}
-                        user={card.userId}
-                        id={card.id}
-                    />
-                ))}
-            </div>
+            {successMessage && (
+                <p className="App-succesMessage">{successMessage}</p>
+            )}
         </div>
     );
 }
 
-export default AddPost;
+export default EditPost;
