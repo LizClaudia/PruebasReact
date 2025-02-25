@@ -1,13 +1,17 @@
 import React from "react";
 interface ButtonProps {
-  onclick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
-  className?:string;
-  children: React.ReactNode; 
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  children: React.ReactNode;
 }
 
-export default function ButtonComponent({ onclick =()=>{}, className = "App-buttonAdd",children= '+',}: ButtonProps) {
+export default function ButtonComponent({
+  onClick,
+  className = "App-buttonAdd",
+  children = "+",
+}: ButtonProps) {
   return (
-    <button className={className} onClick={onclick}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   );
