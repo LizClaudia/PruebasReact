@@ -3,13 +3,13 @@ import ButtonComponent from "../../components/shared/button/button.component";
 import { useNavigate } from "react-router-dom";
 function Home() {
     const navigate = useNavigate();
-    const handleclkic = async () => {
+    const handleClick = async () => {
         navigate("/add_post");
     };
     return (
         <div>
             <MainContentComponent></MainContentComponent>
-            <ButtonComponent onclick={handleclkic}>+</ButtonComponent>
+            <ButtonComponent onClick={handleClick}>+</ButtonComponent>
         </div>
     );
 }
