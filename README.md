@@ -94,6 +94,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
                     - Styled it for better readability.
                     - Linked it to the homepage and the new form page for improved user experience.
 
+## Third Step - Adding Features and Enhancements
+
+- ### Backend Integration:
+              - Implemented  services to interact with the API:
+                  - Fetch existing post.
+                  - Edit an existin post
+              - Frontend Enhancements
+                  - Added a edit form component for editing posts.
+                  - Improved Breadcrumbs component to enhance navigation:
+                        - Linked it to the edit form page for improved user experience.
+  
 ## Technologies Used
 
 - **React**: JavaScript library for building user interfaces.
