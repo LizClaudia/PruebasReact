@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Card from "../../shared/cards/card.component";
-import { Post } from "../../../services/posts_service";
-import { getPosts } from "../../../utils/getData";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../store";
+import { fetchPosts } from "../../../../post_slice";
 
 const MainContentComponent: React.FC = () => {
-    const [cards, setCard] = useState<Post[]>([]);
-
+    const dispatch = useDispatch<AppDispatch>();
+    const posts = useSelector((state: RootState) => state.posts);
     useEffect(() => {
-        getPosts().then((data) => setCard(data));
-    }, []);
+        if (posts.length === 0) {
+            dispatch(fetchPosts());
+        }
+        // Cargar los posts al montar el componente
+    }, [dispatch, posts.length]);
     return (
         <div className="App-grid">
-            {cards.map((card, index) => (
+            {posts.map((post, index) => (
                 <Card
-                    id={card.id}
+                    id={post.id}
                     key={index}
-                    title={card.title}
-                    description={card.body}
-                    user={card.userId}
+                    title={post.title}
+                    description={post.body}
+                    user={post.userId ?? 1}
                 />
             ))}
         </div>

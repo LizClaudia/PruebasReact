@@ -4,6 +4,6 @@ export const createPost = async (
     title: string,
     body: string
 ): Promise<Post> => {
-    const { data } = await api.post("", { title, body });
+    const { data } = await api.post<Post>("", { title, body, user: 1 });
     return data;
 };
