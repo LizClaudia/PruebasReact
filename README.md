@@ -81,18 +81,28 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Second Step - Adding Features and Enhancements
 
 - ### Environment Variables:
-          - Configured `.env` to store the API URL and ensure secure access to backend services.
-          - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
+                        - Configured `.env` to store the API URL and ensure secure access to backend services.
+                        - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
 - ### Backend Integration:
-          - Implemented  services to interact with the API:
-              - Fetch existing posts.
-              - Add a new post
-          - Frontend Enhancements
-              - Added a new form component for creating posts.
-              - Updated the Button component to accept props and allow customization.
-              - Improved Breadcrumbs component to enhance navigation:
-                    - Styled it for better readability.
-                    - Linked it to the homepage and the new form page for improved user experience.
+
+                        - Implemented  services to interact with the API:
+                            - Fetch existing posts.
+                            - Add a new post
+                        - Frontend Enhancements
+                            - Added a new form component for creating posts.
+                            - Updated the Button component to accept props and allow customization.
+                            - Improved Breadcrumbs component to enhance navigation:
+                                  - Styled it for better readability.
+                                  - Linked it to the homepage and the new form page for improved user experience.
+
+- ### Backend Integration:
+                    - Implemented  services to interact with the API:
+                        - Fetch existing post.
+                        - Edit an existin post
+                    - Frontend Enhancements
+                        - Added a edit form component for editing posts.
+                        - Improved Breadcrumbs component to enhance navigation:
+                              - Linked it to the edit form page for improved user experience.
 
 ## Technologies Used
 

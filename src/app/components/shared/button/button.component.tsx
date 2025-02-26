@@ -6,12 +6,12 @@ interface ButtonProps {
 }
 
 export default function ButtonComponent({
-    onClick: onclick,
+    onClick,
     className = "App-buttonAdd",
     children = "+",
 }: ButtonProps) {
     return (
-        <button className={className} onClick={onclick}>
+        <button className={className} onClick={onClick}>
             {children}
         </button>
     );

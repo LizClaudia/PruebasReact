@@ -7,16 +7,6 @@ import { Post } from "../../services/posts_service";
 function AddPost() {
     const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
     const [cards, setCards] = useState<Post[]>([]);
-    //    const cards = [
-    //     { title: "Card 1", description: "Description 1" },
-    //     { title: "Card 2", description: "Description 2" },
-    //     { title: "Card 3", description: "Description 3" },
-    //     { title: "Card 4", description: "Description 4" },
-    //     { title: "Card 5", description: "Description 5" },
-    //     { title: "Card 6", description: "Description 6" },
-    //     { title: "Card 7", description: "Description 7" },
-    //     { title: "Card 8", description: "Description 8" },
-    //   ];
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -27,7 +17,7 @@ function AddPost() {
     };
     const submit = async () => {
         try {
-            const newPost: Post = await createPost(
+            const newPost = await createPost(
                 formData.postTitle,
                 formData.postDesc
             );
@@ -72,11 +62,11 @@ function AddPost() {
             <div className="App-grid">
                 {cards.map((card, index) => (
                     <Card
+                        id={card.id}
                         key={index}
                         title={card.title}
                         description={card.body}
                         user={card.userId}
-                        id={card.id}
                     />
                 ))}
             </div>
