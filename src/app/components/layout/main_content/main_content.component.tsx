@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Card from "../../shared/cards/card.component";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../store";
-import { fetchPosts } from "../../../../post_slice";
+import { AppDispatch, RootState } from "../../../store/store";
+import { fetchPosts } from "../../../store/slices/post_slice";
 
 const MainContentComponent: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();

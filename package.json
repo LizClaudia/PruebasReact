@@ -5,8 +5,9 @@
     "dependencies": {
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
-        "@goaigua/go-gisapi": "^2.9.3",
-        "@goaigua/goaigua-styles": "1.1.0-SNAPSHOT",
+        "@goaigua/go-gisapi": "2.8.0",
+        "@goaigua/goaigua-config": "0.3.1",
+        "@goaigua/goaigua-styles": "1.0.0",
         "@mui/material": "^6.4.5",
         "@reduxjs/toolkit": "^2.6.0",
         "@testing-library/dom": "^10.4.0",
@@ -15,7 +16,9 @@
         "@testing-library/user-event": "^13.5.0",
         "@types/jest": "^27.5.2",
         "axios": "^1.7.9",
+        "eslint-config-react-app": "7.0.1",
         "material-ui-breadcrumbs": "^0.1.6",
+        "node": "20.11.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-redux": "^9.2.0",
@@ -87,6 +90,7 @@
         "husky": "^9.1.7",
         "lint-staged": "^15.4.3",
         "prettier": "^3.5.2",
+        "ts-loader": "^9.5.2",
         "vite": "^6.1.1"
     }
 }

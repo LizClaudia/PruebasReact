@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import ButtonComponent from "../button/button.component";
 import { useNavigate } from "react-router-dom";
-import { deletePost } from "../../../utils/deleteData";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/app/store/store";
+import { erasePost } from "../../../store/slices/post_slice";
 
 interface CardProps {
     id: number;
@@ -11,26 +13,26 @@ interface CardProps {
 }
 const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const handleClick = async () => {
         navigate(`/edit_post/${id}`);
     };
+    const dispatch = useDispatch<AppDispatch>();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
-    const erasePost = async () => {
-        console.log("esta entrando a elimianr");
+    const submitErase = async () => {
+        setIsLoading(true);
         try {
-            console.log("esta entrando al try");
-            const deletedPost = await deletePost(id);
-            console.log(deletedPost);
-
-            if (deletedPost) {
-                console.log("entra al if");
-                setSuccessMessage("Se eliminado el post correctamente.");
+            const resultAction = await dispatch(erasePost(id));
+            if (erasePost.fulfilled.match(resultAction)) {
+                setSuccessMessage("Se ha eliminado el post correctamente.");
                 setTimeout(() => {
                     navigate(-1);
                 }, 2000);
             }
         } catch (error) {
             console.log("Error: ", error);
+        } finally {
+            setIsLoading(false);
         }
     };
     return (
@@ -50,9 +52,10 @@ const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
                 </ButtonComponent>
                 <ButtonComponent
                     className="App-buttonActions"
-                    onClick={erasePost}
+                    onClick={submitErase}
+                    disabled={isLoading}
                 >
-                    Eliminar
+                    {isLoading ? "Eliminando..." : "Eliminar"}
                 </ButtonComponent>
             </div>
         </div>

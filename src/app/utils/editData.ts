@@ -1,7 +1,7 @@
 import { api, Post } from "../services/posts_service";
 
 export const getPost = async (id: number): Promise<Post> => {
-    const { data } = await api.get(`/${id}`);
+    const { data } = await api.get<Post>(`/${id}`);
     return data;
 };
 
@@ -10,6 +10,9 @@ export const editPost = async (
     title: string,
     body: string
 ): Promise<Post> => {
-    const { data } = await api.put(`/${id}`, { title, body });
+    const { data } = await api.put<Post>(`/${id > 100 ? 100 : id}`, {
+        title,
+        body,
+    });
     return data;
 };

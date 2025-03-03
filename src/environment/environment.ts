@@ -1,4 +1,4 @@
-type EnvVariableKey = "API_URL";
+type EnvVariableKey = "API_URL" | "OTRA_ENV";
 export interface EnvVariable {
     name: string;
     value: string;
@@ -21,7 +21,11 @@ declare global {
 
 export const getEnvVariable = (envVariable: EnvVariableKey): string => {
     console.log(import.meta.env);
-    window.env = { API_URL: "https://jsonplaceholder.typicode.com/posts" };
+
+    window.env = {
+        API_URL: "https://jsonplaceholder.typicode.com/posts",
+        OTRA_ENV: "hoho",
+    };
 
     return window?.env?.[envVariable] ?? import.meta.env[`VITE_${envVariable}`];
 };

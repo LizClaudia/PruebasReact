@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import ButtonComponent from "../../components/shared/button/button.component";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../store";
-import { addPost } from "../../../post_slice";
+import { AppDispatch } from "../../store/store";
 import { useNavigate } from "react-router-dom";
+import { addPost } from "../../store/slices/post_slice";
 
 function AddPost() {
     const dispatch = useDispatch<AppDispatch>();

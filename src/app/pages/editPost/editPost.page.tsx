@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import ButtonComponent from "../../components/shared/button/button.component";
-import { editPost, getPost } from "../../utils/editData";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectPostById, updatePost } from "../../store/slices/post_slice";
+import { AppDispatch, RootState } from "../../store/store";
 
 function EditPost() {
     const { id } = useParams();
+    const dispatch = useDispatch<AppDispatch>();
     const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
     const navigate = useNavigate();
-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | "">("");
+
+    const post = useSelector((state: RootState) =>
+        selectPostById(state, Number(id))
+    );
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await getPost(Number.parseInt(id!));
-                setFormData({
-                    postTitle: response.title || "",
-                    postDesc: response.body || "",
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchData();
-    }, []);
+        if (post) {
+            setFormData({
+                postTitle: post.title,
+                postDesc: post.body,
+            });
+        }
+    }, [post]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -35,13 +36,15 @@ function EditPost() {
 
     const submit = async () => {
         try {
-            const editedPost = await editPost(
-                Number.parseInt(id!),
-                formData.postTitle,
-                formData.postDesc
+            const action = await dispatch(
+                updatePost({
+                    id: Number(id),
+                    title: formData.postTitle,
+                    body: formData.postDesc,
+                })
             );
             setFormData({ postTitle: "", postDesc: "" });
-            if (editedPost) {
+            if (updatePost.fulfilled.match(action)) {
                 setSuccessMessage("Se ha modificado el post correctamente.");
                 setTimeout(() => {
                     navigate(-1);
