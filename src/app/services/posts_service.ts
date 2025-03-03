@@ -12,3 +12,7 @@ export interface Post {
     title: string;
     body: string;
 }
+export const EMPTY_POST: Omit<Post, "userId" | "id"> = {
+    title: "",
+    body: "",
+};

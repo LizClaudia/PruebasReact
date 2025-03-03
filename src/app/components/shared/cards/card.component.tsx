@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
             <p>User: {user}</p>
             <div className="App-actions">
                 <ButtonComponent
-                    onclick={handleClkic}
+                    onClick={handleClkic}
                     className="App-buttonActions"
                 >
                     Editar

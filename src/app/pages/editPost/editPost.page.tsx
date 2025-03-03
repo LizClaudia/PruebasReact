@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import ButtonComponent from "../../components/shared/button/button.component";
 import { editPost, getPost } from "../../utils/editData";
 import { useNavigate, useParams } from "react-router-dom";
+import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function EditPost() {
     const { id } = useParams();
-    const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
+    const [formData, setFormData] =
+        useState<Omit<Post, "userId" | "id">>(EMPTY_POST);
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -14,8 +16,8 @@ function EditPost() {
             try {
                 const response = await getPost(Number.parseInt(id!));
                 setFormData({
-                    postTitle: response.title || "",
-                    postDesc: response.body || "",
+                    title: response.title || "",
+                    body: response.body || "",
                 });
             } catch (error) {
                 console.log(error);
@@ -37,10 +39,10 @@ function EditPost() {
         try {
             const editedPost = await editPost(
                 Number.parseInt(id!),
-                formData.postTitle,
-                formData.postDesc
+                formData.title,
+                formData.body
             );
-            setFormData({ postTitle: "", postDesc: "" });
+            setFormData({ title: "", body: "" });
             if (editedPost) {
                 setSuccessMessage("Se ha modificado el post correctamente.");
                 setTimeout(() => {
@@ -66,7 +68,7 @@ function EditPost() {
                     type="text"
                     id="postTitle"
                     name="postTitle"
-                    value={formData.postTitle}
+                    value={formData.title}
                     onChange={handleChange}
                 ></input>
 
@@ -74,7 +76,7 @@ function EditPost() {
                     className="App-textArea"
                     id="postDesc"
                     name="postDesc"
-                    value={formData.postDesc}
+                    value={formData.body}
                     onChange={handleChange}
                 ></textarea>
                 <ButtonComponent onClick={submit} className="App-submit">
