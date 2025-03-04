@@ -1,3 +1,5 @@
-import { getEnvVariable } from "../../../environment/environment"
+import { getEnvVariable } from "../../../environment/environment";
 
-export const getServiceUrl = (envVariable:string): string => getEnvVariable("API_URL");
+export const getServiceUrl = (_envVariable: string): string => {
+    return getEnvVariable("API_URL");
+};

@@ -1,106 +1,144 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    width: 50px;
-    height: 50px;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 1rem;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 1rem;
 }
 
-.App-ul{
-  list-style: none;
-  display: flex;
-  gap:1rem;
+.App-ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 .App-link {
-  color: #61dafb;
-  text-decoration: none;
+    color: #61dafb;
+    text-decoration: none;
 }
 
 .App-card {
-  border: 1px solid #61dafb;
-  border-radius: 10px;
-  padding: 1rem;
+    border: 1px solid #61dafb;
+    border-radius: 10px;
+    padding: 1rem;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
 
+.App-card:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .App-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem;
 }
 
-.App-buttonAdd{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border:1px solid #61dafb;
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  box-shadow:  0 4px 8px rgba(4, 93, 111, 0.2);
-  cursor: pointer;
-  color: aqua;
-  font-size: 2rem;
+.App-buttonAdd {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #61dafb;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(4, 93, 111, 0.2);
+    cursor: pointer;
+    color: aqua;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
 }
 
-.App-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
-  gap:1rem;
+.App-buttonAdd:hover {
+    transform: scale(1.05);
 }
 
-.App-input{
-  border: 1px solid #61dafb;
-  border-radius: 5px;
-  width: 50%;
-  padding: 1rem;
+.App-buttonActions {
+    border: 1px solid #61dafb;
+    border-radius: 10%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(4, 93, 111, 0.2);
+    cursor: pointer;
+    padding: 5px;
+
+    transition: transform 0.3s ease;
 }
-.App-textArea{
-  border: 1px solid #61dafb;
-  border-radius: 5px;
-  width: 50%;
-  padding: 1rem;
+
+.App-buttonActions:hover {
+    transform: scale(1.05);
 }
-.App-submit{
-  border: 1px solid #61dafb;
-  background-color: transparent;
-  box-shadow:  0 4px 8px rgba(4, 93, 111, 0.2);
-  border-radius: 5%;
-  padding: 1rem;
-  cursor: pointer;
+
+.App-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.App-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+.App-input {
+    border: 1px solid #61dafb;
+    border-radius: 5px;
+    width: 50%;
+    padding: 1rem;
+}
+.App-textArea {
+    border: 1px solid #61dafb;
+    border-radius: 5px;
+    width: 50%;
+    padding: 1rem;
+}
+.App-submit {
+    border: 1px solid #61dafb;
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(4, 93, 111, 0.2);
+    border-radius: 5%;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.App-succesMessage {
+    color: green;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

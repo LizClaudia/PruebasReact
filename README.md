@@ -1,4 +1,3 @@
-
 # Base Project with React
 
 This is a basic project built with **React** and **pnpm**. The project serves as an assessment to practice React and understand how to work with its core concepts and components. It includes reusable components and a clean project structure that can be expanded upon.
@@ -16,22 +15,21 @@ pnpm install
 ## Start the Development Server
 
 Once the dependencies are installed, you can start the development server with:
+
 ```bash
 pnpm start
 ```
-This will run the app at http://localhost:3000.
 
+This will run the app at http://localhost:3000.
 
 ## Project Structure
 
 The project is structured in the following way:
 
-
 - **`components/layout/`**: Contains the layout components like the `Header` and the `MainContent`. `MainContent` holds the grid where content is displayed.
 - **`components/shared/`**: Contains reusable components that can be used throughout the application, such as buttons, cards, etc.
 - **`styles/`**: Contains global styles or CSS files.
 - **`assets/`**: Contains images, icons, and other static files used in the app.
-
 
 ## Available Scripts
 
@@ -71,32 +69,46 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 # Development Progress
+
 ## First Step - Initial Project Setup and Basic Components
 
- - ### Project Structure:
-     I began by creating a template with a modular structure to make it easy to scale and maintain. The folder structure is designed with flexibility in mind, separating layout components and reusable ones.
- - ### Reusable Components:
-     - Created basic reusable components, such as `Button`, `Card`, `Grid`layout.
-     - Designed a `Header`component that serves as the top navigation bar for all pages.
-## Second Step  -  Adding Features and Enhancements
- - ### Environment Variables:
-       - Configured `.env` to store the API URL and ensure secure access to backend services.
-       - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
+- ### Project Structure:
+    I began by creating a template with a modular structure to make it easy to scale and maintain. The folder structure is designed with flexibility in mind, separating layout components and reusable ones.
+- ### Reusable Components:
+    - Created basic reusable components, such as `Button`, `Card`, `Grid`layout.
+    - Designed a `Header`component that serves as the top navigation bar for all pages.
+
+## Second Step - Adding Features and Enhancements
+
+- ### Environment Variables:
+                      - Configured `.env` to store the API URL and ensure secure access to backend services.
+                      - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
 - ### Backend Integration:
-      - Implemented  services to interact with the API:
-          - Fetch existing posts.
-          - Add a new post 
-      - Frontend Enhancements
-          - Added a new form component for creating posts.
-          - Updated the Button component to accept props and allow customization.
-          - Improved Breadcrumbs component to enhance navigation:
-                - Styled it for better readability.
-                - Linked it to the homepage and the new form page for improved user experience.
+
+                      - Implemented  services to interact with the API:
+                          - Fetch existing posts.
+                          - Add a new post
+                      - Frontend Enhancements
+                          - Added a new form component for creating posts.
+                          - Updated the Button component to accept props and allow customization.
+                          - Improved Breadcrumbs component to enhance navigation:
+                                - Styled it for better readability.
+                                - Linked it to the homepage and the new form page for improved user experience.
+
+- ### Backend Integration:
+                  - Implemented  services to interact with the API:
+                      - Fetch existing post.
+                      - Edit an existin post
+                  - Frontend Enhancements
+                      - Added a edit form component for editing posts.
+                      - Improved Breadcrumbs component to enhance navigation:
+                            - Linked it to the edit form page for improved user experience.
+
 ## Technologies Used
- - **React**: JavaScript library for building user interfaces.
- - **pnpm**: Fast and disk space-efficient package manager.
- - **React** Router: Library for handling routing in a React app.
- - **TypeScript**: Superset of JavaScript for static typing and better development experience.
- - **CSS Grid & Flexbox**: For building responsive and flexible layouts.
- - **Material UI**: For UI components like buttons, grids, etc. (optional if used).
- 
+
+- **React**: JavaScript library for building user interfaces.
+- **pnpm**: Fast and disk space-efficient package manager.
+- **React** Router: Library for handling routing in a React app.
+- **TypeScript**: Superset of JavaScript for static typing and better development experience.
+- **CSS Grid & Flexbox**: For building responsive and flexible layouts.
+- **Material UI**: For UI components like buttons, grids, etc. (optional if used).

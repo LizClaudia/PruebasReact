@@ -1,56 +1,88 @@
 {
-  "name": "pnpm-cra",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^6.4.5",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.126",
-    "axios": "^1.7.9",
-    "material-ui-breadcrumbs": "^0.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "vite"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "dotenv": "^16.4.7",
-    "vite": "^6.1.1"
-  }
+    "name": "pnpm-cra",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/material": "^6.4.5",
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/react": "^16.2.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.5.2",
+        "axios": "^1.7.9",
+        "material-ui-breadcrumbs": "^0.1.6",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-router-dom": "^7.2.0",
+        "react-scripts": "5.0.1",
+        "typescript": "^4.9.5",
+        "web-vitals": "^3.5.2"
+    },
+    "prettier": "@goaigua/goaigua-config/config/prettier-config/prettier.json",
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "pnpm format",
+            "pnpm lint"
+        ],
+        "*.{css,json,html,md}": [
+            "pnpm format"
+        ]
+    },
+    "scripts": {
+        "preinstall": "npx only-allow pnpm",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "dev": "vite",
+        "format": "prettier --write --ignore-unknown .",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "prepare": "husky"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@babel/core": "^7.26.9",
+        "@babel/preset-env": "^7.26.9",
+        "@eslint/js": "^9.21.0",
+        "@goaigua/goaigua-config": "^0.3.1",
+        "@types/node": "^22.13.5",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-react": "^4.3.4",
+        "dotenv": "^16.4.7",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-cypress": "^4.1.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-n": "^17.15.1",
+        "eslint-plugin-prettier": "^5.2.3",
+        "eslint-plugin-promise": "^7.2.1",
+        "eslint-plugin-react": "^7.37.4",
+        "eslint-plugin-storybook": "^0.11.3",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.4.3",
+        "prettier": "^3.5.2",
+        "vite": "^6.1.1"
+    }
 }
