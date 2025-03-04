@@ -38,11 +38,15 @@ export const updatePost = createAsyncThunk<
     Post,
     { title: string; body: string; id: number }
 >("posts/editPost", async (editedPost) => {
+    console.log("Estop es es el slice");
+    console.log(editPost);
     const response = await editPost(
         editedPost.id,
         editedPost.title,
         editedPost.body
     );
+    console.log("Este es el reponse del slice");
+    console.log(response);
     return response;
 });
 export const erasePost = createAsyncThunk(
@@ -76,16 +80,19 @@ const postSlice = createSlice({
                     (post) => post.id === action.payload.id
                 );
                 if (!existingPost) {
-                    state.push(action.payload); // Agregar solo si no está en el estado
+                    state.push(action.payload);
                 }
             })
 
             .addCase(updatePost.fulfilled, (state, action) => {
-                const index = state.findIndex(
-                    (post) => post.id === action.payload.id
-                );
+                const originalId = action.meta.arg.id;
+                const index = state.findIndex((post) => post.id === originalId);
                 if (index !== -1) {
-                    state[index] = action.payload;
+                    state[index] = {
+                        ...state[index],
+                        ...action.payload,
+                        id: originalId,
+                    };
                 }
             })
             .addCase(erasePost.fulfilled, (state, action) => {

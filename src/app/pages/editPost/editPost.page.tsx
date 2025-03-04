@@ -4,11 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectPostById, updatePost } from "../../store/slices/post_slice";
 import { AppDispatch, RootState } from "../../store/store";
+import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function EditPost() {
     const { id } = useParams();
     const dispatch = useDispatch<AppDispatch>();
-    const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
+    const [formData, setFormData] =
+        useState<Omit<Post, "userId" | "id">>(EMPTY_POST);
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string | "">("");
 
@@ -19,8 +21,8 @@ function EditPost() {
     useEffect(() => {
         if (post) {
             setFormData({
-                postTitle: post.title,
-                postDesc: post.body,
+                title: post.title,
+                body: post.body,
             });
         }
     }, [post]);
@@ -39,11 +41,11 @@ function EditPost() {
             const action = await dispatch(
                 updatePost({
                     id: Number(id),
-                    title: formData.postTitle,
-                    body: formData.postDesc,
+                    title: formData.title,
+                    body: formData.body,
                 })
             );
-            setFormData({ postTitle: "", postDesc: "" });
+            setFormData({ title: "", body: "" });
             if (updatePost.fulfilled.match(action)) {
                 setSuccessMessage("Se ha modificado el post correctamente.");
                 setTimeout(() => {
@@ -68,16 +70,16 @@ function EditPost() {
                     className="App-input"
                     type="text"
                     id="postTitle"
-                    name="postTitle"
-                    value={formData.postTitle}
+                    name="title"
+                    value={formData.title}
                     onChange={handleChange}
                 ></input>
 
                 <textarea
                     className="App-textArea"
                     id="postDesc"
-                    name="postDesc"
-                    value={formData.postDesc}
+                    name="body"
+                    value={formData.body}
                     onChange={handleChange}
                 ></textarea>
                 <ButtonComponent onClick={submit} className="App-submit">

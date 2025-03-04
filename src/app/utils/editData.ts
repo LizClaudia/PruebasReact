@@ -14,5 +14,7 @@ export const editPost = async (
         title,
         body,
     });
+    console.log("Este es el data del editData");
+    console.log(data);
     return data;
 };
