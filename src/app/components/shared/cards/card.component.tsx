@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/app/store/store";
 import { erasePost } from "../../../store/slices/post_slice";
+import { useTranslation } from "react-i18next";
 
 interface CardProps {
     id: number;
@@ -13,18 +14,21 @@ interface CardProps {
 }
 const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const [isLoading, setIsLoading] = useState(false);
     const handleClick = async () => {
+        console.log("Esta entradno a esta funcion");
         navigate(`/edit_post/${id}`);
     };
     const dispatch = useDispatch<AppDispatch>();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
     const submitErase = async () => {
         setIsLoading(true);
         try {
             const resultAction = await dispatch(erasePost(id));
             if (erasePost.fulfilled.match(resultAction)) {
-                setSuccessMessage("Se ha eliminado el post correctamente.");
+                setSuccessMessage(t("SUCCESS_MESSAGE_DELETED"));
                 setTimeout(() => {
                     navigate(-1);
                 }, 2000);
@@ -48,14 +52,15 @@ const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
                     onClick={handleClick}
                     className="App-buttonActions"
                 >
-                    Editar
+                    {t("APP.BUTTONS.EDIT")}
                 </ButtonComponent>
+
                 <ButtonComponent
                     className="App-buttonActions"
                     onClick={submitErase}
                     disabled={isLoading}
                 >
-                    {isLoading ? "Eliminando..." : "Eliminar"}
+                    {isLoading ? "..." : t("APP.BUTTONS.DELETE")}
                 </ButtonComponent>
             </div>
         </div>

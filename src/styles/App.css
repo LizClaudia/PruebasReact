@@ -88,6 +88,10 @@
 
     transition: transform 0.3s ease;
 }
+.active {
+    background-color: #61dafb;
+    color: #282c34;
+}
 
 .App-buttonActions:hover {
     transform: scale(1.05);

@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectPostById, updatePost } from "../../store/slices/post_slice";
 import { AppDispatch, RootState } from "../../store/store";
 import { Post, EMPTY_POST } from "../../services/posts_service";
+import { useTranslation } from "react-i18next";
 
 function EditPost() {
     const { id } = useParams();
+
+    const { t } = useTranslation();
     const dispatch = useDispatch<AppDispatch>();
     const [formData, setFormData] =
         useState<Omit<Post, "userId" | "id">>(EMPTY_POST);
@@ -47,7 +50,7 @@ function EditPost() {
             );
             setFormData({ title: "", body: "" });
             if (updatePost.fulfilled.match(action)) {
-                setSuccessMessage("Se ha modificado el post correctamente.");
+                setSuccessMessage(t("SUCCESS_MESSAGE_EDITED"));
                 setTimeout(() => {
                     navigate(-1);
                 }, 2000);
@@ -59,7 +62,7 @@ function EditPost() {
 
     return (
         <div className="App">
-            <h3>Modificar un post</h3>
+            <h3>{t("COMPONENT_LAYOUT_EDIT_FORM_TITLE")}</h3>
             <form
                 className="App-form"
                 onSubmit={(e) => {
@@ -83,7 +86,7 @@ function EditPost() {
                     onChange={handleChange}
                 ></textarea>
                 <ButtonComponent onClick={submit} className="App-submit">
-                    Modificar
+                    {t("APP.BUTTONS.SAVE")}
                 </ButtonComponent>
             </form>
             {successMessage && (
