@@ -4,10 +4,11 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "../../store/slices/post_slice";
+import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function AddPost() {
     const dispatch = useDispatch<AppDispatch>();
-    const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
+    const [formData, setFormData] = useState<Post>(EMPTY_POST);
     const navigate = useNavigate();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const handleChange = (
@@ -20,10 +21,8 @@ function AddPost() {
     };
     const submit = async () => {
         try {
-            const action = await dispatch(
-                addPost({ title: formData.postTitle, body: formData.postDesc })
-            );
-            setFormData({ postTitle: "", postDesc: "" });
+            const action = await dispatch(addPost(formData));
+            setFormData(EMPTY_POST);
             if (addPost.fulfilled.match(action)) {
                 setSuccessMessage("Se ha agregado el post correctamente.");
                 setTimeout(() => {
@@ -47,17 +46,17 @@ function AddPost() {
                     placeholder=" Titulo del Post"
                     className="App-input"
                     type="text"
-                    id="postTitle"
-                    name="postTitle"
-                    value={formData.postTitle}
+                    id="title"
+                    name="title"
+                    value={formData.title}
                     onChange={handleChange}
                 ></input>
 
                 <textarea
                     className="App-textArea"
-                    id="postDesc"
-                    name="postDesc"
-                    value={formData.postDesc}
+                    id="body"
+                    name="body"
+                    value={formData.body}
                     onChange={handleChange}
                     placeholder="Descripcion del Post"
                 ></textarea>
