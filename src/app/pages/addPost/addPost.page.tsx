@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import ButtonComponent from "../../components/shared/button/button.component";
-import Card from "../../components/shared/cards/card.component";
-import { createPost } from "../../utils/postData";
-import { Post } from "../../services/posts_service";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store";
+import { useNavigate } from "react-router-dom";
+import { addPost } from "../../store/slices/post_slice";
+import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function AddPost() {
-    const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
-    const [cards, setCards] = useState<Post[]>([]);
+    const dispatch = useDispatch<AppDispatch>();
+    const [formData, setFormData] = useState<Post>(EMPTY_POST);
+    const navigate = useNavigate();
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
@@ -17,12 +21,14 @@ function AddPost() {
     };
     const submit = async () => {
         try {
-            const newPost = await createPost(
-                formData.postTitle,
-                formData.postDesc
-            );
-            setCards((prevCards) => [...prevCards, newPost]);
-            setFormData({ postTitle: "", postDesc: "" });
+            const action = await dispatch(addPost(formData));
+            setFormData(EMPTY_POST);
+            if (addPost.fulfilled.match(action)) {
+                setSuccessMessage("Se ha agregado el post correctamente.");
+                setTimeout(() => {
+                    navigate(-1);
+                }, 2000);
+            }
         } catch (error) {
             console.log("Error al enviar los datos: ", error);
         }
@@ -40,17 +46,17 @@ function AddPost() {
                     placeholder=" Titulo del Post"
                     className="App-input"
                     type="text"
-                    id="postTitle"
-                    name="postTitle"
-                    value={formData.postTitle}
+                    id="title"
+                    name="title"
+                    value={formData.title}
                     onChange={handleChange}
                 ></input>
 
                 <textarea
                     className="App-textArea"
-                    id="postDesc"
-                    name="postDesc"
-                    value={formData.postDesc}
+                    id="body"
+                    name="body"
+                    value={formData.body}
                     onChange={handleChange}
                     placeholder="Descripcion del Post"
                 ></textarea>
@@ -59,17 +65,9 @@ function AddPost() {
                     Agregar
                 </ButtonComponent>
             </form>
-            <div className="App-grid">
-                {cards.map((card, index) => (
-                    <Card
-                        id={card.id}
-                        key={index}
-                        title={card.title}
-                        description={card.body}
-                        user={card.userId}
-                    />
-                ))}
-            </div>
+            {successMessage && (
+                <p className="App-succesMessage">{successMessage}</p>
+            )}
         </div>
     );
 }
