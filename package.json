@@ -17,6 +17,8 @@
         "@types/jest": "^27.5.2",
         "axios": "^1.7.9",
         "eslint-config-react-app": "7.0.1",
+        "highcharts": "^12.1.2",
+        "highcharts-react-official": "^3.2.1",
         "i18next": "^24.2.2",
         "import": "^0.0.6",
         "material-ui-breadcrumbs": "^0.1.6",

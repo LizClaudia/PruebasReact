@@ -55,6 +55,7 @@ function AddPost() {
                     name="postTitle"
                     value={formData.postTitle}
                     onChange={handleChange}
+                    required
                 ></input>
 
                 <textarea
@@ -63,6 +64,7 @@ function AddPost() {
                     name="postDesc"
                     value={formData.postDesc}
                     onChange={handleChange}
+                    required
                     placeholder={t(
                         "COMPONENT_LAYOUT_ADD_FORM_PLACEHOLDER_DESCRIPTION"
                     )}

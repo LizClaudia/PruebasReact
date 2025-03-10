@@ -5,11 +5,21 @@ import { createPost } from "../../utils/postData";
 import { editPost } from "../../utils/editData";
 import { RootState } from "../store";
 import { deletePost } from "../../utils/deleteData";
+import { getPostsByUser } from "../../utils/getPostsByUser";
 
 export const fetchPosts = createAsyncThunk<Post[], void>(
     "posts/fetchPosts",
     async () => {
         const response = await getPosts();
+        return response; // Ya es un `Post[]`, no hace falta modificarlo
+    }
+);
+
+export const fetchPostsByUser = createAsyncThunk<Post[], number>(
+    "posts/fetchPostsByUser",
+    async (userId) => {
+        console.log("esta qui con el ide de user ", userId);
+        const response = await getPostsByUser(userId);
         return response; // Ya es un `Post[]`, no hace falta modificarlo
     }
 );
@@ -68,6 +78,9 @@ const postSlice = createSlice({
         builder
 
             .addCase(fetchPosts.fulfilled, (state, action) => {
+                return action.payload;
+            })
+            .addCase(fetchPostsByUser.fulfilled, (state, action) => {
                 return action.payload;
             })
 

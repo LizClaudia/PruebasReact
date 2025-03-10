@@ -24,7 +24,7 @@ export const getEnvVariable = (envVariable: EnvVariableKey): string => {
 
     window.env = {
         API_URL: "https://jsonplaceholder.typicode.com/posts",
-        OTRA_ENV: "hoho",
+        OTRA_ENV: "https://jsonplaceholder.typicode.com/comments",
     };
 
     return window?.env?.[envVariable] ?? import.meta.env[`VITE_${envVariable}`];
