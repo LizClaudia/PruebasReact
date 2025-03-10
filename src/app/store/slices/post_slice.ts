@@ -18,7 +18,6 @@ export const fetchPosts = createAsyncThunk<Post[], void>(
 export const fetchPostsByUser = createAsyncThunk<Post[], number>(
     "posts/fetchPostsByUser",
     async (userId) => {
-        console.log("esta qui con el ide de user ", userId);
         const response = await getPostsByUser(userId);
         return response; // Ya es un `Post[]`, no hace falta modificarlo
     }
@@ -48,15 +47,12 @@ export const updatePost = createAsyncThunk<
     Post,
     { title: string; body: string; id: number }
 >("posts/editPost", async (editedPost) => {
-    console.log("Estop es es el slice");
-    console.log(editPost);
     const response = await editPost(
         editedPost.id,
         editedPost.title,
         editedPost.body
     );
-    console.log("Este es el reponse del slice");
-    console.log(response);
+
     return response;
 });
 export const erasePost = createAsyncThunk(
