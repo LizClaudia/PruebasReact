@@ -13,7 +13,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={<MainComponent />}>
-                        <Route index element={<Home />} />{" "}
+                        <Route index element={<Home />} />
                         {/* Home por defecto */}
                         <Route path="home" element={<Home />} />
                         <Route path="add_post" element={<AddPost />} />

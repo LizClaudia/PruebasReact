@@ -9,30 +9,21 @@ function Header() {
     const changeLanguage = (language: string) => {
         i18n.changeLanguage(language);
     };
+
     return (
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <ButtonComponent
-                className={`App-buttonActions ${i18n.language === LANGUAGES.EN_GB ? "active" : ""}`}
-                onClick={() => changeLanguage(LANGUAGES.EN_GB)}
-            >
-                {" "}
-                EN-GB
-            </ButtonComponent>
-            <ButtonComponent
-                className={`App-buttonActions ${i18n.language === LANGUAGES.EN_US ? "active" : ""}`}
-                onClick={() => changeLanguage(LANGUAGES.EN_US)}
-            >
-                {" "}
-                EN-US
-            </ButtonComponent>
-            <ButtonComponent
-                className={`App-buttonActions ${i18n.language === LANGUAGES.ES_ES ? "active" : ""}`}
-                onClick={() => changeLanguage(LANGUAGES.ES_ES)}
-            >
-                {" "}
-                ES
-            </ButtonComponent>
+
+            {Object.values(LANGUAGES).map((lang) => (
+                <ButtonComponent
+                    className={`App-buttonActions ${i18n.language === lang ? "active" : ""}`}
+                    onClick={() => changeLanguage(lang)}
+                    key={lang}
+                >
+                    {lang.toUpperCase()}
+                </ButtonComponent>
+            ))}
+
             <BreadcrumbComponent />
         </header>
     );
