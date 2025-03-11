@@ -81,28 +81,63 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Second Step - Adding Features and Enhancements
 
 - ### Environment Variables:
-                                                - Configured `.env` to store the API URL and ensure secure access to backend services.
-                                                - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
+                                                          - Configured `.env` to store the API URL and ensure secure access to backend services.
+                                                          - Used `import.meta.env.VITE_API_URL` to fetch data from the backend.
 - ### Backend Integration:
 
-                                                - Implemented  services to interact with the API:
-                                                    - Fetch existing posts.
-                                                    - Add a new post
-                                                - Frontend Enhancements
-                                                    - Added a new form component for creating posts.
-                                                    - Updated the Button component to accept props and allow customization.
-                                                    - Improved Breadcrumbs component to enhance navigation:
-                                                          - Styled it for better readability.
-                                                          - Linked it to the homepage and the new form page for improved user experience.
+                                                          - Implemented  services to interact with the API:
+                                                              - Fetch existing posts.
+                                                              - Add a new post
+                                                          - Frontend Enhancements
+                                                              - Added a new form component for creating posts.
+                                                              - Updated the Button component to accept props and allow customization.
+                                                              - Improved Breadcrumbs component to enhance navigation:
+                                                                    - Styled it for better readability.
+                                                                    - Linked it to the homepage and the new form page for improved user experience.
+
+## Third Step - Adding Features and Enhancements
 
 - ### Backend Integration:
-                                            - Implemented  services to interact with the API:
-                                                - Fetch existing post.
-                                                - Edit an existin post
-                                            - Frontend Enhancements
-                                                - Added a edit form component for editing posts.
-                                                - Improved Breadcrumbs component to enhance navigation:
-                                                      - Linked it to the edit form page for improved user experience.
+                        - Implemented  services to interact with the API:
+                            - Fetch existing post.
+                            - Edit an existin post
+                        - Frontend Enhancements
+                            - Added a edit form component for editing posts.
+                            - Improved Breadcrumbs component to enhance navigation:
+                                  - Linked it to the edit form page for improved user experience.
+
+## Fourth Step - Adding Features and Enhancements
+
+- ### Backend Integration:
+                        - Implemented  services to interact with the API:
+                            - Fetch existing post.
+                            - Delete an existin post
+                        - Frontend Enhancements
+                            - Added a funtionality to erase the post.
+
+## Fifth Step - Adding Features and Enhancements
+
+### Redux Integration & Local Storage:
+
+- Implemented **Redux** to manage the application's state efficiently.
+- Enabled **Local Storage** to persist the state, allowing users to see their changes (new posts, edits, and deletions).
+
+## Sixth Step - Adding Internationalization (i18n) 🌍
+
+To enhance the user experience, I added **internationalization** using `react-i18next` to support multiple languages in the web application.
+
+### Installing Dependencies
+
+- First, I installed the necessary package:
+
+```bash
+npm install i18next react-i18next i18next-browser-languagedetector
+```
+
+- Create an i18n.ts file inside the src folder to configure translations
+- Add json files for each language
+- In the necessary components, use useTranslation to dynamically update text:
+- Now, when the user switches the language, the website updates dynamically without needing a page refresh.
 
 ## Technologies Used
 

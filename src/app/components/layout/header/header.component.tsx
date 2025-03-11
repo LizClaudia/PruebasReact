@@ -13,11 +13,12 @@ function Header() {
         i18n.changeLanguage(language);
     };
     return (
-        <header className="App-header">
+        <header className="App-header" data-testid="header-settings-button">
             <img src={logo} className="App-logo" alt="logo" />
             <ButtonComponent
                 className={`App-buttonActions ${i18n.language === LANGUAGES.EN_GB ? "active" : ""}`}
                 onClick={() => changeLanguage(LANGUAGES.EN_GB)}
+                data-testid="en-GB"
             >
                 {" "}
                 EN-GB
@@ -25,6 +26,7 @@ function Header() {
             <ButtonComponent
                 className={`App-buttonActions ${i18n.language === LANGUAGES.EN_US ? "active" : ""}`}
                 onClick={() => changeLanguage(LANGUAGES.EN_US)}
+                data-testid="en-US"
             >
                 {" "}
                 EN-US
@@ -32,6 +34,7 @@ function Header() {
             <ButtonComponent
                 className={`App-buttonActions ${i18n.language === LANGUAGES.ES_ES ? "active" : ""}`}
                 onClick={() => changeLanguage(LANGUAGES.ES_ES)}
+                data-testid="es-ES"
             >
                 {" "}
                 ES
@@ -39,6 +42,7 @@ function Header() {
             <ButtonComponent
                 className="App-buttonActions"
                 onClick={toggleTheme}
+                data-testid="change-theme"
             >
                 {theme === "light"
                     ? `${t("APP.NAVBAR.SETTINGS.THEMES.LIGHT")}`
