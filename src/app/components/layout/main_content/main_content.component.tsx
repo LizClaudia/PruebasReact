@@ -15,10 +15,10 @@ const MainContentComponent: React.FC = () => {
     }, [dispatch, posts.length]);
     return (
         <div className="App-grid">
-            {posts.map((post, index) => (
+            {posts.map((post) => (
                 <Card
                     id={post.id}
-                    key={index}
+                    key={post.id}
                     title={post.title}
                     description={post.body}
                     user={post.userId ?? 1}

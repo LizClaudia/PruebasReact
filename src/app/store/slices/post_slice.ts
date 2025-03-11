@@ -14,7 +14,7 @@ export const fetchPosts = createAsyncThunk<Post[], void>(
     }
 );
 
-export const addPost = createAsyncThunk<Post, { title: string; body: string }>(
+export const addPost = createAsyncThunk<Post, Post>(
     "posts/addPost",
     async (newPost) => {
         const response = await createPost(newPost.title, newPost.body);
@@ -38,15 +38,11 @@ export const updatePost = createAsyncThunk<
     Post,
     { title: string; body: string; id: number }
 >("posts/editPost", async (editedPost) => {
-    console.log("Estop es es el slice");
-    console.log(editPost);
     const response = await editPost(
         editedPost.id,
         editedPost.title,
         editedPost.body
     );
-    console.log("Este es el reponse del slice");
-    console.log(response);
     return response;
 });
 export const erasePost = createAsyncThunk(
