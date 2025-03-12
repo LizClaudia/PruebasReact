@@ -4,12 +4,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "../../store/slices/post_slice";
+import { useTranslation } from "react-i18next";
 import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function AddPost() {
     const dispatch = useDispatch<AppDispatch>();
     const [formData, setFormData] = useState<Post>(EMPTY_POST);
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,7 +26,7 @@ function AddPost() {
             const action = await dispatch(addPost(formData));
             setFormData(EMPTY_POST);
             if (addPost.fulfilled.match(action)) {
-                setSuccessMessage("Se ha agregado el post correctamente.");
+                setSuccessMessage(t("SUCCESS_MESSAGE_ADD"));
                 setTimeout(() => {
                     navigate(-1);
                 }, 2000);
@@ -35,7 +37,7 @@ function AddPost() {
     };
     return (
         <div className="App">
-            <h3>Agregar un post</h3>
+            <h3>{t("COMPONENT_LAYOUT_ADD_FORM_TITLE")}</h3>
             <form
                 className="App-form"
                 onSubmit={(e) => {
@@ -43,7 +45,9 @@ function AddPost() {
                 }}
             >
                 <input
-                    placeholder=" Titulo del Post"
+                    placeholder={t(
+                        "COMPONENT_LAYOUT_ADD_FORM_PLACEHOLDER_TITLE"
+                    )}
                     className="App-input"
                     type="text"
                     id="title"
@@ -58,11 +62,13 @@ function AddPost() {
                     name="body"
                     value={formData.body}
                     onChange={handleChange}
-                    placeholder="Descripcion del Post"
+                    placeholder={t(
+                        "COMPONENT_LAYOUT_ADD_FORM_PLACEHOLDER_DESCRIPTION"
+                    )}
                 ></textarea>
 
                 <ButtonComponent onClick={submit} className="App-submit">
-                    Agregar
+                    {t("APP.BUTTONS.SAVE")}
                 </ButtonComponent>
             </form>
             {successMessage && (

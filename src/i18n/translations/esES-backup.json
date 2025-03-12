@@ -1,0 +1,18 @@
+{
+    "APP.NAVBAR.SETTINGS.LANGUAGE": "Idioma",
+    "APP.NAVBAR.SETTINGS.LANGUAGES.PLACEHOLDER": "Selecciona un idioma ...",
+    "APP.NAVBAR.SETTINGS.LANGUAGES.EN_US": "Inglés US",
+    "APP.NAVBAR.SETTINGS.LANGUAGES.EN_GB": "Inglés GB",
+    "APP.NAVBAR.SETTINGS.LANGUAGES.ES_ES": "Español",
+    "APP.BUTTONS.SAVE": "Guardar",
+    "APP.BUTTONS.CANCEL": "Cancelar",
+    "APP.BUTTONS.EDIT": "Editar",
+    "APP.BUTTONS.DELETE": "Eliminar",
+    "COMPONENT_LAYOUT_ADD_FORM_TITLE": "Agregar nuevo post",
+    "COMPONENT_LAYOUT_EDIT_FORM_TITLE": "Modificar un post",
+    "COMPONENT_LAYOUT_ADD_FORM_PLACEHOLDER_TITLE": "Titulo del post",
+    "COMPONENT_LAYOUT_ADD_FORM_PLACEHOLDER_DESCRIPTION": "Descripcion del post",
+    "SUCCESS_MESSAGE_DELETED": "Se ha elimiando exitosamente el post",
+    "SUCCESS_MESSAGE_EDITED": "Se ha modificado exitosamente el post",
+    "SUCCESS_MESSAGE_ADD": "Se ha agregado exitosamente el post"
+}

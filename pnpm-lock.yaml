@@ -49,6 +49,12 @@ importers:
             eslint-config-react-app:
                 specifier: 7.0.1
                 version: 7.0.1(@babel/plugin-syntax-flow@7.26.0(@babel/core@7.26.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.26.9))(eslint@8.57.1)(jest@27.5.1)(typescript@4.9.5)
+            i18next:
+                specifier: ^24.2.2
+                version: 24.2.2(typescript@4.9.5)
+            import:
+                specifier: ^0.0.6
+                version: 0.0.6
             material-ui-breadcrumbs:
                 specifier: ^0.1.6
                 version: 0.1.6
@@ -61,6 +67,9 @@ importers:
             react-dom:
                 specifier: ^19.0.0
                 version: 19.0.0(react@19.0.0)
+            react-i18next:
+                specifier: ^15.4.1
+                version: 15.4.1(i18next@24.2.2(typescript@4.9.5))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
             react-redux:
                 specifier: ^9.2.0
                 version: 9.2.0(@types/react@19.0.10)(react@19.0.0)(redux@5.0.1)
@@ -6502,6 +6511,12 @@ packages:
         engines: { node: ">=12" }
         hasBin: true
 
+    html-parse-stringify@3.0.1:
+        resolution:
+            {
+                integrity: sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==,
+            }
+
     html-webpack-plugin@5.6.3:
         resolution:
             {
@@ -6631,6 +6646,17 @@ packages:
                 integrity: sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==,
             }
 
+    i18next@24.2.2:
+        resolution:
+            {
+                integrity: sha512-NE6i86lBCKRYZa5TaUDkU5S4HFgLIEJRLr3Whf2psgaxBleQ2LC1YW1Vc+SCgkAW7VEzndT6al6+CzegSUHcTQ==,
+            }
+        peerDependencies:
+            typescript: ^5
+        peerDependenciesMeta:
+            typescript:
+                optional: true
+
     iconv-lite@0.4.24:
         resolution:
             {
@@ -6705,6 +6731,14 @@ packages:
                 integrity: sha512-2SPlun1JUPWoM6t3F0dw0FkCF/jWY8kttcY4f599GLTSjh2OCuuhdTkJQsEcZzBqbXZGKMK2OqW1oZsjtf/gQA==,
             }
         engines: { node: ">=8" }
+        hasBin: true
+
+    import@0.0.6:
+        resolution:
+            {
+                integrity: sha512-QPhTdjy9J4wUzmWSG7APkSgMFuPGPw+iJTYUblcfc2AfpqaatbwgCldK1HoLYx+v/+lWvab63GWZtNkcnj9JcQ==,
+            }
+        engines: { node: ">=0.10.0" }
         hasBin: true
 
     imurmurhash@0.1.4:
@@ -8360,6 +8394,12 @@ packages:
             }
         engines: { node: ">=12" }
 
+    optimist@0.3.7:
+        resolution:
+            {
+                integrity: sha512-TCx0dXQzVtSCg2OgY/bO9hjM9cV4XYx09TVK+s3+FhkjT6LovsLe+pPMzpWf+6yXK/hUizs2gUoTw3jHM0VaTQ==,
+            }
+
     optionator@0.8.3:
         resolution:
             {
@@ -9553,6 +9593,22 @@ packages:
             }
         peerDependencies:
             react: ^15.3.0 || ^16.0.0
+
+    react-i18next@15.4.1:
+        resolution:
+            {
+                integrity: sha512-ahGab+IaSgZmNPYXdV1n+OYky95TGpFwnKRflX/16dY04DsYYKHtVLjeny7sBSCREEcoMbAgSkFiGLF5g5Oofw==,
+            }
+        peerDependencies:
+            i18next: ">= 23.2.3"
+            react: ">= 16.8.0"
+            react-dom: "*"
+            react-native: "*"
+        peerDependenciesMeta:
+            react-dom:
+                optional: true
+            react-native:
+                optional: true
 
     react-is@16.13.1:
         resolution:
@@ -11433,6 +11489,13 @@ packages:
             yaml:
                 optional: true
 
+    void-elements@3.1.0:
+        resolution:
+            {
+                integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==,
+            }
+        engines: { node: ">=0.10.0" }
+
     w3c-hr-time@1.0.2:
         resolution:
             {
@@ -11693,6 +11756,13 @@ packages:
                 integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==,
             }
         engines: { node: ">=0.10.0" }
+
+    wordwrap@0.0.3:
+        resolution:
+            {
+                integrity: sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==,
+            }
+        engines: { node: ">=0.4.0" }
 
     workbox-background-sync@6.6.0:
         resolution:
@@ -16487,6 +16557,10 @@ snapshots:
             relateurl: 0.2.7
             terser: 5.39.0
 
+    html-parse-stringify@3.0.1:
+        dependencies:
+            void-elements: 3.1.0
+
     html-webpack-plugin@5.6.3(webpack@5.98.0):
         dependencies:
             "@types/html-minifier-terser": 6.1.0
@@ -16586,6 +16660,12 @@ snapshots:
 
     hyphenate-style-name@1.1.0: {}
 
+    i18next@24.2.2(typescript@4.9.5):
+        dependencies:
+            "@babel/runtime": 7.26.9
+        optionalDependencies:
+            typescript: 4.9.5
+
     iconv-lite@0.4.24:
         dependencies:
             safer-buffer: 2.1.2
@@ -16621,6 +16701,10 @@ snapshots:
         dependencies:
             pkg-dir: 4.2.0
             resolve-cwd: 3.0.0
+
+    import@0.0.6:
+        dependencies:
+            optimist: 0.3.7
 
     imurmurhash@0.1.4: {}
 
@@ -17808,6 +17892,10 @@ snapshots:
             is-docker: 2.2.1
             is-wsl: 2.2.0
 
+    optimist@0.3.7:
+        dependencies:
+            wordwrap: 0.0.3
+
     optionator@0.8.3:
         dependencies:
             deep-is: 0.1.4
@@ -18560,6 +18648,15 @@ snapshots:
             prop-types: 15.6.0
             react: 16.2.0
             warning: 3.0.0
+
+    react-i18next@15.4.1(i18next@24.2.2(typescript@4.9.5))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+        dependencies:
+            "@babel/runtime": 7.26.9
+            html-parse-stringify: 3.0.1
+            i18next: 24.2.2(typescript@4.9.5)
+            react: 19.0.0
+        optionalDependencies:
+            react-dom: 19.0.0(react@19.0.0)
 
     react-is@16.13.1: {}
 
@@ -19795,6 +19892,8 @@ snapshots:
             terser: 5.39.0
             yaml: 2.7.0
 
+    void-elements@3.1.0: {}
+
     w3c-hr-time@1.0.2:
         dependencies:
             browser-process-hrtime: 1.0.0
@@ -20024,6 +20123,8 @@ snapshots:
             isexe: 2.0.0
 
     word-wrap@1.2.5: {}
+
+    wordwrap@0.0.3: {}
 
     workbox-background-sync@6.6.0:
         dependencies:
