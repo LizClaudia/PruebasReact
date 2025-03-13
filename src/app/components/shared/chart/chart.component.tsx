@@ -81,8 +81,10 @@ function ChartComponent() {
     return (
         <div>
             <div className="App">
-                <h2 className="App">{t("APP.CHART.HEADER")}</h2>
-                <p className="App">{t("APP.CHART.PARAGRAPH")}</p>
+                <h2 style={{ textAlign: "center" }}>{t("APP.CHART.HEADER")}</h2>
+                <p style={{ textAlign: "center" }}>
+                    {t("APP.CHART.PARAGRAPH")}
+                </p>
                 <input
                     type="number"
                     placeholder="Ingrese User ID"
