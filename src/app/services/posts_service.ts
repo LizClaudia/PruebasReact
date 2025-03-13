@@ -1,13 +1,11 @@
 import axios from "axios";
-import { getCommentsUrl, getServiceUrl } from "./helpers/services.helpers";
+import { getServiceUrl } from "./helpers/services.helpers";
 import { APIS } from "../constants/api.constants";
 
 export const api = axios.create({
     baseURL: getServiceUrl(APIS.APP_SERVICE_URL),
 });
-export const commentsApi = axios.create({
-    baseURL: getCommentsUrl(APIS.APP_COMMENTS_URL),
-});
+
 export interface Post {
     userId?: number;
     id?: number;
