@@ -14,11 +14,12 @@ function Header() {
     };
 
     return (
-        <header className="App-header">
+        <header className="App-header" data-testid="header-settings-button">
             <img src={logo} className="App-logo" alt="logo" />
             <ButtonComponent
                 className="App-buttonActions"
                 onClick={toggleTheme}
+                data-testid="change-theme"
             >
                 {theme === "light"
                     ? `${t("APP.NAVBAR.SETTINGS.THEMES.LIGHT")}`
