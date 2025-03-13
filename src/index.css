@@ -5,6 +5,13 @@
         url("@goaigua/goaigua-styles/icons/libraries/typography/fa-light-300.ttf")
             format("truetype");
 }
+:root {
+    --primary-color: #282c34;
+    --background-color: #ffffff;
+    --text-color: #282c34;
+    --link-color: #61dafb;
+    --text-link-color: var(--background-color);
+}
 
 body {
     margin: 0;
@@ -14,6 +21,25 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    --text-link-color: var(--background-color);
+}
+.dark {
+    --primary-color: #fff;
+    --background-color: #282c34;
+    --header-background-color: #616d85;
+    --text-color: #fff;
+    --link-color: #61dafb;
+    --text-link-color: var(--background-color);
+}
+.light {
+    --primary-color: #282c34;
+    --background-color: #ffffff;
+    --header-background-color: #547cc5;
+    --text-color: #282c34;
+    --link-color: #61dafb;
+    --text-link-color: var(--background-color);
 }
 
 code {

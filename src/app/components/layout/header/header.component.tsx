@@ -3,9 +3,12 @@ import logo from "../../../../assets/logo/logo.svg";
 import BreadcrumbComponent from "../../shared/breadcrumbs/breadcrumbs.component";
 import ButtonComponent from "../../shared/button/button.component";
 import { LANGUAGES } from "../../../enums/global.enum";
-function Header() {
-    const { i18n } = useTranslation();
+import { useTheme } from "../../../types/theme.type";
 
+function Header() {
+    const { t, i18n } = useTranslation();
+
+    const { theme, toggleTheme } = useTheme();
     const changeLanguage = (language: string) => {
         i18n.changeLanguage(language);
     };
@@ -13,6 +16,14 @@ function Header() {
     return (
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
+            <ButtonComponent
+                className="App-buttonActions"
+                onClick={toggleTheme}
+            >
+                {theme === "light"
+                    ? `${t("APP.NAVBAR.SETTINGS.THEMES.LIGHT")}`
+                    : `${t("APP.NAVBAR.SETTINGS.THEMES.DARK")}`}
+            </ButtonComponent>
 
             {Object.values(LANGUAGES).map((lang) => (
                 <ButtonComponent

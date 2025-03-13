@@ -15,6 +15,11 @@ export default function BreadcrumbComponent() {
                     Home
                 </Link>
             </li>
+            <li>
+                <Link className="App-link" to={"/chart"}>
+                    Chart
+                </Link>
+            </li>
 
             {pathName.map((value, index) => {
                 const where = `/${pathName.slice(0, index + 1).join("/")}`;

@@ -1,3 +1,4 @@
 export const APIS = {
     APP_SERVICE_URL: "VITE_API_URL",
+    APP_COMMENTS_URL: "VITE_COMMENTS_API_URL",
 };

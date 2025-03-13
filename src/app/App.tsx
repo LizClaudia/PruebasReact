@@ -6,6 +6,7 @@ import Home from "./pages/home/home.page";
 import EditPost from "./pages/editPost/editPost.page";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../i18n/config";
+import ChartComponent from "./components/shared/chart/chart.component";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route path="home" element={<Home />} />
                         <Route path="add_post" element={<AddPost />} />
                         <Route path="edit_post/:id" element={<EditPost />} />
+                        <Route path="chart" element={<ChartComponent />} />
                     </Route>
                 </Routes>
             </Router>

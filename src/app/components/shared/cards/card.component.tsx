@@ -17,7 +17,6 @@ const Card: React.FC<CardProps> = ({ id, title, description, user }) => {
     const { t } = useTranslation();
     const [isLoading, setIsLoading] = useState(false);
     const handleClick = async () => {
-        console.log("Esta entradno a esta funcion");
         navigate(`/edit_post/${id}`);
     };
     const dispatch = useDispatch<AppDispatch>();

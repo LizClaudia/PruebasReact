@@ -7,8 +7,8 @@ export const api = axios.create({
 });
 
 export interface Post {
-    userId: number;
-    id: number;
+    userId?: number;
+    id?: number;
     title: string;
     body: string;
 }
@@ -18,3 +18,15 @@ export const EMPTY_POST: Post = {
     id: 0,
     userId: 1,
 };
+export interface Comments {
+    id: number;
+    postId: number;
+    body: string;
+}
+
+export interface User {
+    id: number;
+    name: string;
+    userName: string;
+    email: string;
+}
