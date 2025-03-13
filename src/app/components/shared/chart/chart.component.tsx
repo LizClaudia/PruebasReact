@@ -4,15 +4,25 @@ import HighchartsReact from "highcharts-react-official";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../../store/store";
-import { fetchPostsByUser } from "../../../store/slices/post_slice";
-import { fetchCommentsByUser } from "../../../store/slices/comments_slice";
+import { fetchComments } from "../../../store/slices/comments_slice";
+import { fetchPosts } from "../../../store/slices/post_slice";
+import ChartAllUsersComponent from "./chart_all_users.component";
+import { useTranslation } from "react-i18next";
 
 function ChartComponent() {
-    const dispatch = useDispatch<AppDispatch>();
-    const [userId, setUserId] = useState<number | "">(""); // Input para ID de usuario
+    const { t } = useTranslation();
 
-    // Accede a los posts y comentarios desde el estado de Redux
+    const dispatch = useDispatch<AppDispatch>();
+    const [userId, setUserId] = useState<number | "">("");
+
     const posts = useSelector((state: RootState) => state.posts);
+
+    useEffect(() => {
+        if (posts.length === 0) {
+            dispatch(fetchPosts());
+        }
+    }, [dispatch, posts.length]);
+
     const comments = useSelector((state: RootState) => state.comments);
 
     const [postCount, setPostCount] = useState<number>(0);
@@ -28,8 +38,7 @@ function ChartComponent() {
 
         const fetchData = async () => {
             try {
-                await dispatch(fetchPostsByUser(Number(userId)));
-                await dispatch(fetchCommentsByUser(Number(userId)));
+                await dispatch(fetchComments());
             } catch (err) {
                 setError("Error al obtener los datos.");
             } finally {
@@ -47,7 +56,6 @@ function ChartComponent() {
         const filteredComments = comments.filter(
             (comment) => comment.postId === userId
         );
-
         setPostCount(filteredPosts.length);
         setCommentCount(filteredComments.length);
     }, [userId, posts, comments]);
@@ -65,7 +73,6 @@ function ChartComponent() {
             },
         ],
     };
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const id = e.target.value ? Number(e.target.value) : "";
         setUserId(id);
@@ -73,16 +80,32 @@ function ChartComponent() {
 
     return (
         <div>
-            <input
-                type="number"
-                placeholder="Ingrese User ID"
-                value={userId}
-                onChange={handleChange}
-                className="App-input App-form"
-            />
+            <div className="App">
+                <h2 className="App">{t("APP.CHART.HEADER")}</h2>
+                <p className="App">{t("APP.CHART.PARAGRAPH")}</p>
+                <input
+                    type="number"
+                    placeholder="Ingrese User ID"
+                    value={userId}
+                    onChange={handleChange}
+                    className="App-input App"
+                />
+            </div>
+
             {isLoading && <p>Cargando...</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <HighchartsReact highcharts={Highcharts} options={options} />
+
+            <div className="App-charts">
+                <div>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options}
+                    />
+                </div>
+                <div>
+                    <ChartAllUsersComponent />
+                </div>
+            </div>
         </div>
     );
 }

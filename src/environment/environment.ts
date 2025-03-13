@@ -20,10 +20,8 @@ declare global {
  */
 
 export const getEnvVariable = (envVariable: EnvVariableKey): string => {
-    console.log(import.meta.env);
-
     window.env = {
-        API_URL: "https://jsonplaceholder.typicode.com/posts",
+        API_URL: "https://jsonplaceholder.typicode.com/",
         OTRA_ENV: "https://jsonplaceholder.typicode.com/comments",
     };
 

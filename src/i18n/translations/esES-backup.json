@@ -17,5 +17,8 @@
     "SUCCESS_MESSAGE_ADD": "Se ha agregado exitosamente el post",
     "APP.NAVBAR.SETTINGS.THEME": "Tema",
     "APP.NAVBAR.SETTINGS.THEMES.DARK": "Tema oscuro",
-    "APP.NAVBAR.SETTINGS.THEMES.LIGHT": "Tema claro"
+    "APP.NAVBAR.SETTINGS.THEMES.LIGHT": "Tema claro",
+    "APP.CHART.HEADER": "Diagrama de barras sobre post y comentarios",
+    "APP.CHART.QUANTITY": "Cantidad",
+    "APP.CHART.PARAGRAPH": "Se puede visualizar la informacion de post y comentarios de acuerdo al usuario deseado o en general de todos los usuarios existentes en la base de datos"
 }

@@ -8,10 +8,9 @@ export const api = axios.create({
 export const commentsApi = axios.create({
     baseURL: getCommentsUrl(APIS.APP_COMMENTS_URL),
 });
-
 export interface Post {
-    userId: number;
-    id: number;
+    userId?: number;
+    id?: number;
     title: string;
     body: string;
 }
@@ -23,4 +22,11 @@ export interface Comments {
     id: number;
     postId: number;
     body: string;
+}
+
+export interface User {
+    id: number;
+    name: string;
+    userName: string;
+    email: string;
 }
