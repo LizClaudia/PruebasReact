@@ -13438,7 +13438,7 @@ snapshots:
       react-addons-create-fragment: 15.6.2
       react-dom: 16.2.0(react@16.2.0)
       react-router: 4.2.0(react@16.2.0)
-      react-router-config: 1.0.0-beta.4(react-router@4.2.0(react@19.0.0))(react@16.2.0)
+      react-router-config: 1.0.0-beta.4(react-router@4.2.0(react@16.2.0))(react@16.2.0)
       react-router-dom: 4.2.2(react@16.2.0)
 
   material-ui@0.20.0(react-dom@16.2.0(react@16.2.0))(react@16.2.0):
@@ -14507,7 +14507,7 @@ snapshots:
 
   react-refresh@0.14.2: {}
 
-  react-router-config@1.0.0-beta.4(react-router@4.2.0(react@19.0.0))(react@16.2.0):
+  react-router-config@1.0.0-beta.4(react-router@4.2.0(react@16.2.0))(react@16.2.0):
     dependencies:
       react: 16.2.0
       react-router: 4.2.0(react@16.2.0)
