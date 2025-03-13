@@ -15,7 +15,7 @@ function EditPost() {
     const [formData, setFormData] =
         useState<Omit<Post, "userId" | "id">>(EMPTY_POST);
     const navigate = useNavigate();
-    const [successMessage, setSuccessMessage] = useState<string | "">("");
+    const [successMessage, setSuccessMessage] = useState<string>("");
 
     const post = useSelector((state: RootState) =>
         selectPostById(state, Number(id))
@@ -48,7 +48,7 @@ function EditPost() {
                     body: formData.body,
                 })
             );
-            setFormData({ title: "", body: "" });
+            setFormData(EMPTY_POST);
             if (updatePost.fulfilled.match(action)) {
                 setSuccessMessage(t("SUCCESS_MESSAGE_EDITED"));
                 setTimeout(() => {

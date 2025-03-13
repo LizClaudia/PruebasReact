@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getCommentsByUser } from "../../utils/getCommentsByUser";
+import { getComments } from "../../utils/getComments";
 import { Comments } from "../../services/posts_service";
 import { RootState } from "../store";
 
@@ -7,10 +7,10 @@ import { RootState } from "../store";
 const initialState: Comments[] = [];
 
 // Thunk para obtener comentarios por usuario
-export const fetchCommentsByUser = createAsyncThunk<Comments[], number>(
-    "comments/fetchCommentsByUser",
-    async (userId) => {
-        const response = await getCommentsByUser(userId);
+export const fetchComments = createAsyncThunk<Comments[]>(
+    "comments/fetchComments",
+    async () => {
+        const response = await getComments();
         return response;
     }
 );
@@ -21,14 +21,14 @@ const commentsSlice = createSlice({
     reducers: {}, // Aquí puedes agregar reducers síncronos si los necesitas
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCommentsByUser.pending, () => {
+            .addCase(fetchComments.pending, () => {
                 // Puedes manejar un estado de carga aquí si necesitas
                 console.log("Cargando comentarios...");
             })
-            .addCase(fetchCommentsByUser.fulfilled, (state, action) => {
+            .addCase(fetchComments.fulfilled, (state, action) => {
                 return action.payload; // Reemplaza el estado con los nuevos comentarios
             })
-            .addCase(fetchCommentsByUser.rejected, (state, action) => {
+            .addCase(fetchComments.rejected, (state, action) => {
                 console.error("Error al obtener comentarios:", action.error);
             });
     },

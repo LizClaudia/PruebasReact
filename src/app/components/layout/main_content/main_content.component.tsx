@@ -11,14 +11,14 @@ const MainContentComponent: React.FC = () => {
         if (posts.length === 0) {
             dispatch(fetchPosts());
         }
-        // Cargar los posts al montar el componente
     }, [dispatch, posts.length]);
+
     return (
         <div className="App-grid">
-            {posts.map((post, index) => (
+            {posts.map((post) => (
                 <Card
-                    id={post.id}
-                    key={index}
+                    id={post.id ?? 0}
+                    key={post.id}
                     title={post.title}
                     description={post.body}
                     user={post.userId ?? 1}

@@ -5,10 +5,11 @@ import { AppDispatch } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "../../store/slices/post_slice";
 import { useTranslation } from "react-i18next";
+import { Post, EMPTY_POST } from "../../services/posts_service";
 
 function AddPost() {
     const dispatch = useDispatch<AppDispatch>();
-    const [formData, setFormData] = useState({ postTitle: "", postDesc: "" });
+    const [formData, setFormData] = useState<Post>(EMPTY_POST);
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -22,10 +23,8 @@ function AddPost() {
     };
     const submit = async () => {
         try {
-            const action = await dispatch(
-                addPost({ title: formData.postTitle, body: formData.postDesc })
-            );
-            setFormData({ postTitle: "", postDesc: "" });
+            const action = await dispatch(addPost(formData));
+            setFormData(EMPTY_POST);
             if (addPost.fulfilled.match(action)) {
                 setSuccessMessage(t("SUCCESS_MESSAGE_ADD"));
                 setTimeout(() => {
@@ -51,18 +50,18 @@ function AddPost() {
                     )}
                     className="App-input"
                     type="text"
-                    id="postTitle"
-                    name="postTitle"
-                    value={formData.postTitle}
+                    id="title"
+                    name="title"
+                    value={formData.title}
                     onChange={handleChange}
                     required
                 ></input>
 
                 <textarea
                     className="App-textArea"
-                    id="postDesc"
-                    name="postDesc"
-                    value={formData.postDesc}
+                    id="body"
+                    name="body"
+                    value={formData.body}
                     onChange={handleChange}
                     required
                     placeholder={t(

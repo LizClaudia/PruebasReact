@@ -5,7 +5,6 @@ import { createPost } from "../../utils/postData";
 import { editPost } from "../../utils/editData";
 import { RootState } from "../store";
 import { deletePost } from "../../utils/deleteData";
-import { getPostsByUser } from "../../utils/getPostsByUser";
 
 export const fetchPosts = createAsyncThunk<Post[], void>(
     "posts/fetchPosts",
@@ -15,15 +14,7 @@ export const fetchPosts = createAsyncThunk<Post[], void>(
     }
 );
 
-export const fetchPostsByUser = createAsyncThunk<Post[], number>(
-    "posts/fetchPostsByUser",
-    async (userId) => {
-        const response = await getPostsByUser(userId);
-        return response; // Ya es un `Post[]`, no hace falta modificarlo
-    }
-);
-
-export const addPost = createAsyncThunk<Post, { title: string; body: string }>(
+export const addPost = createAsyncThunk<Post, Post>(
     "posts/addPost",
     async (newPost) => {
         const response = await createPost(newPost.title, newPost.body);
@@ -52,7 +43,6 @@ export const updatePost = createAsyncThunk<
         editedPost.title,
         editedPost.body
     );
-
     return response;
 });
 export const erasePost = createAsyncThunk(
@@ -74,9 +64,6 @@ const postSlice = createSlice({
         builder
 
             .addCase(fetchPosts.fulfilled, (state, action) => {
-                return action.payload;
-            })
-            .addCase(fetchPostsByUser.fulfilled, (state, action) => {
                 return action.payload;
             })
 

@@ -17,5 +17,8 @@
     "SUCCESS_MESSAGE_ADD": "The post has been successfully added.",
     "APP.NAVBAR.SETTINGS.THEME": "Theme",
     "APP.NAVBAR.SETTINGS.THEMES.DARK": "Dark theme",
-    "APP.NAVBAR.SETTINGS.THEMES.LIGHT": "Light theme"
+    "APP.NAVBAR.SETTINGS.THEMES.LIGHT": "Light theme",
+    "APP.CHART.HEADER": "Bar chart of posts and comments",
+    "APP.CHART.QUANTITY": "Quantity",
+    "APP.CHART.PARAGRAPH": "The information on posts and comments can be viewed either for a specific user or for all existing users in the database."
 }
